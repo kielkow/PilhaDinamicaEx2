@@ -7,7 +7,7 @@ public class TesteDinamico {
             
             PilhaDinamica p = new PilhaDinamica();            
             
-            System.out.println(p.calcula("5 5 + 2 * 4 1 + +"));
+            System.out.println(p.calcula("5 2 /"));
             
         }
 }

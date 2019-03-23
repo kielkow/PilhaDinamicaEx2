@@ -60,10 +60,17 @@ public class PilhaDinamica implements TADPilha {
         throw new EmptyStackException();
     }
     
-    public int calcula(String expressao){
+    
+    
+    
+    
+    
+    
+    
+    public double calcula(String expressao){
            
      String[] textoSeparado = expressao.split(" "); 
-     int x, y, soma,mult, resultado =0;
+     double x, y, soma, mult, sub, div, resultado = 0;
      
      
      
@@ -73,8 +80,8 @@ public class PilhaDinamica implements TADPilha {
          
          if(textoSeparado[i].equals("*")){
              
-            x = Integer.parseInt(textoSeparado[i-1]);
-            y = Integer.parseInt(textoSeparado[i-2]);
+            x = Double.parseDouble(textoSeparado[i-1]);
+            y = Double.parseDouble(textoSeparado[i-2]);
             mult = x*y;
             textoSeparado[i] = String.valueOf(mult);
             
@@ -89,8 +96,8 @@ public class PilhaDinamica implements TADPilha {
             }
          }
          if(textoSeparado[i].equals("+")){
-            x = Integer.parseInt(textoSeparado[i-1]);
-            y = Integer.parseInt(textoSeparado[i-2]);
+            x = Double.parseDouble(textoSeparado[i-1]);
+            y = Double.parseDouble(textoSeparado[i-2]);
             soma = x+y;
             textoSeparado[i] = String.valueOf(soma);
             
@@ -104,9 +111,43 @@ public class PilhaDinamica implements TADPilha {
                 }
             }
          }
+         if(textoSeparado[i].equals("-")){
+            x = Double.parseDouble(textoSeparado[i-1]);
+            y = Double.parseDouble(textoSeparado[i-2]);
+            sub = x-y;
+            textoSeparado[i] = String.valueOf(sub);
+            
+            textoSeparado[i-1] = null;
+            textoSeparado[i-2] = null;
+            
+            if(i >= 3){
+                if(textoSeparado[i-3] != null){
+                    textoSeparado[i-1] = textoSeparado[i-3];
+                    textoSeparado[i-3] = null;
+                }
+            }
+         }
+         if(textoSeparado[i].equals("/")){
+            x = Double.parseDouble(textoSeparado[i-1]);
+            y = Double.parseDouble(textoSeparado[i-2]);
+            div = x/y;
+            textoSeparado[i] = String.valueOf(div);
+            
+            textoSeparado[i-1] = null;
+            textoSeparado[i-2] = null;
+            
+            if(i >= 3){
+                if(textoSeparado[i-3] != null){
+                    textoSeparado[i-1] = textoSeparado[i-3];
+                    textoSeparado[i-3] = null;
+                }
+            }
+         }
+         
+         
+         
     }
-        int tamanho = textoSeparado.length-1;
-        resultado = Integer.parseInt(textoSeparado[tamanho]);       
+        resultado = Double.parseDouble(textoSeparado[textoSeparado.length-1]);       
         return resultado; 
     }
   
